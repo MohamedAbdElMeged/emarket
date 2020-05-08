@@ -1,0 +1,60 @@
+﻿@model emarket.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "Edit - " + Model.name;
+}
+
+<h2>Edit @Model.name</h2>
+
+<form method="post" action="/products/edit" enctype="multipart/form-data">
+    <div class="form-horizontal">
+
+        <hr />
+        <input hidden name="id" value="@Model.id" />
+        <div class="form-group">
+            <label class="control-label col-md-2">photo</label>
+            <div class="col-md-10">
+                <img width="5%" height="5%" src="~/Images/@Model.image" />
+                <input type="file" name="photo" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2"> name</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="name" value="@Model.name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> price</label>
+            <div class="col-md-10">
+                <input class="form-control" type="text" name="price" value="@Model.price" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> description</label>
+            <div class="col-md-10">
+                <textarea class="form-control" name="description" />@Model.description</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> category</label>
+            <div class="col-md-10">
+                <select name="category_id" class="form-control">
+                    <option value="@Model.category_id"> @Model.category_name</option>
+                    @foreach (var item in Model.categories)
+                    {
+                        if (item.Id != Model.category_id)
+                        {
+                            <option value="@item.Id"> @item.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

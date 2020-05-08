@@ -1,0 +1,29 @@
+﻿@model emarket.ViewModels.ProductDetailsViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.product_name + " - product";
+}
+
+
+
+<div class="jumbotron">
+    <center><h4 class="display-4">@Model.product_name  - @Model.product_price EGP - @Model.category_name</h4></center>
+</div>
+
+<div>
+    <center> <img src="~/Images/@Model.product_image" width="50%" height="50%" /></center>
+</div>
+
+
+<div>
+   <center> <p style="font-size: 36px;">@Model.product_description</p></center>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <a href="/products/edit?id=@Model.product_id" type="button" class="btn btn-primary">Update</a>
+    </div>
+    <div class="col-lg-6">
+        <a href="/products/delete?id=@Model.product_id" type="button" class="btn btn-danger">Delete</a>
+    </div>
+</div>
